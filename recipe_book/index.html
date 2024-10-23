@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+        color: #fff;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .recipe-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.01)
+        );
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .recipe-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent 25%,
+          rgba(0, 255, 255, 0.05) 50%,
+          transparent 75%
+        );
+        background-size: 200% 200%;
+        animation: shimmer 3s infinite linear;
+        pointer-events: none;
+      }
+
+      .recipe-header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+
+      .recipe-title {
+        font-size: 3em;
+        color: #00ffff;
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .recipe-image {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin: 20px auto;
+        display: block;
+        border: 2px solid #00ffff;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      }
+
+      .recipe-description {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: rgba(0, 255, 255, 0.05);
+        border-radius: 15px;
+      }
+
+      .recipe-section {
+        margin: 30px 0;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+        transition: transform 0.3s;
+      }
+
+      .recipe-section:hover {
+        transform: translateY(-5px);
+      }
+
+      .section-title {
+        font-size: 1.8em;
+        color: #00ffff;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-title::before {
+        content: "►";
+        font-size: 0.8em;
+        animation: pulse 2s infinite;
+      }
+
+      .ingredients-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        list-style: none;
+      }
+
+      .ingredient-item {
+        padding: 15px;
+        background: rgba(0, 255, 255, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s;
+      }
+
+      .ingredient-item:hover {
+        transform: scale(1.02);
+        background: rgba(0, 255, 255, 0.15);
+      }
+
+      .ingredient-item::before {
+        content: "•";
+        color: #00ffff;
+        font-size: 1.5em;
+      }
+
+      .instructions-list {
+        list-style: none;
+        counter-reset: step-counter;
+      }
+
+      .instruction-item {
+        margin: 20px 0;
+        padding: 20px;
+        background: rgba(0, 255, 255, 0.05);
+        border-radius: 10px;
+        position: relative;
+        padding-left: 50px;
+        transition: transform 0.3s;
+      }
+
+      .instruction-item:hover {
+        transform: translateX(10px);
+        background: rgba(0, 255, 255, 0.1);
+      }
+
+      .instruction-item::before {
+        counter-increment: step-counter;
+        content: counter(step-counter);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: #00ffff;
+        color: #1a1a1a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .cooking-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .info-card {
+        padding: 20px;
+        background: rgba(0, 255, 255, 0.05);
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .info-card:hover {
+        transform: scale(1.05);
+      }
+
+      .info-title {
+        color: #00ffff;
+        margin-bottom: 10px;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% -200%;
+        }
+        100% {
+          background-position: 200% 200%;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .recipe-container {
+          padding: 20px;
+        }
+
+        .recipe-title {
+          font-size: 2em;
+        }
+
+        .recipe-image {
+          height: 300px;
+        }
+
+        .ingredients-list {
+          grid-template-columns: 1fr;
+        }
+
+        .cooking-info {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="recipe-container">
+      <div class="recipe-header">
+        <h1 class="recipe-title">Sinigang na Baboy</h1>
+        <img
+          src="images/sinigang.jpg"
+          alt="Sinigang na Baboy"
+          class="recipe-image"
+        />
+        <p class="recipe-description">
+          Sinigang na Baboy is a classic Filipino sour soup made with pork,
+          vegetables, and tamarind. This hearty and comforting dish is perfect
+          for rainy days and is known for its signature sour and savory taste
+          that Filipinos love.
+        </p>
+      </div>
+
+      <div class="cooking-info">
+        <div class="info-card">
+          <h3 class="info-title">Prep Time</h3>
+          <p>20 minutes</p>
+        </div>
+        <div class="info-card">
+          <h3 class="info-title">Cook Time</h3>
+          <p>1 hour</p>
+        </div>
+        <div class="info-card">
+          <h3 class="info-title">Servings</h3>
+          <p>6-8 people</p>
+        </div>
+        <div class="info-card">
+          <h3 class="info-title">Difficulty</h3>
+          <p>Medium</p>
+        </div>
+      </div>
+
+      <div class="recipe-section">
+        <h2 class="section-title">Ingredients</h2>
+        <ul class="ingredients-list">
+          <li class="ingredient-item">1 kg pork belly, cut into chunks</li>
+          <li class="ingredient-item">
+            2 pieces tamarind soup base (or fresh tamarind)
+          </li>
+          <li class="ingredient-item">
+            2 pieces medium-sized tomatoes, quartered
+          </li>
+          <li class="ingredient-item">1 large onion, quartered</li>
+          <li class="ingredient-item">2 pieces radish, sliced</li>
+          <li class="ingredient-item">2 pieces eggplant, sliced</li>
+          <li class="ingredient-item">
+            200g string beans, cut into 2-inch length
+          </li>
+          <li class="ingredient-item">1 bundle water spinach (kangkong)</li>
+          <li class="ingredient-item">4 pieces green chili</li>
+          <li class="ingredient-item">2 tablespoons fish sauce</li>
+          <li class="ingredient-item">8-10 cups water</li>
+          <li class="ingredient-item">Salt and pepper to taste</li>
+        </ul>
+      </div>
+
+      <div class="recipe-section">
+        <h2 class="section-title">Instructions</h2>
+        <ol class="instructions-list">
+          <li class="instruction-item">
+            In a large pot, bring water to a boil and add the pork belly. Simmer
+            for about 30 minutes or until meat is tender.
+          </li>
+          <li class="instruction-item">
+            Add the onions and tomatoes. Simmer for 5 minutes.
+          </li>
+          <li class="instruction-item">
+            Add the tamarind soup base and stir until well combined.
+          </li>
+          <li class="instruction-item">
+            Add the radish and cook for 3-5 minutes.
+          </li>
+          <li class="instruction-item">
+            Add the eggplant and string beans. Cook for another 5 minutes.
+          </li>
+          <li class="instruction-item">
+            Season with fish sauce, salt, and pepper to taste.
+          </li>
+          <li class="instruction-item">
+            Add the water spinach and green chili. Cook for 2 minutes.
+          </li>
+          <li class="instruction-item">
+            Turn off heat and let it rest for a few minutes before serving.
+          </li>
+          <li class="instruction-item">Serve hot with steamed rice. Enjoy!</li>
+        </ol>
+      </div>
+
+      <div class="recipe-section">
+        <h2 class="section-title">Tips</h2>
+        <ul class="ingredients-list">
+          <li class="ingredient-item">
+            Use pork with some fat for better flavor
+          </li>
+          <li class="ingredient-item">
+            Don't overcook the vegetables to maintain their crunch
+          </li>
+          <li class="ingredient-item">
+            Adjust the sourness by adding more or less tamarind
+          </li>
+          <li class="ingredient-item">
+            You can add other vegetables like okra or taro
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
