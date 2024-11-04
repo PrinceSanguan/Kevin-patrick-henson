@@ -2,173 +2,471 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link
-      rel="shortcut icon"
-      href="assets/img/about-perfil.jpg"
-      type="image/x-icon"
-    />
-
     <title>Kevin Patrick Henson - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+      :root {
+        --primary: #ff6b6b;
+        --secondary: #4ecdc4;
+        --dark: #2c3e50;
+        --light: #ecf0f1;
+        --accent: #ffe66d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header Styles */
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      header {
+        position: relative;
+        background: var(--primary);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+        margin-bottom: 40px;
+        overflow: hidden;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 8px solid var(--secondary);
+        background: #ddd;
+        transition: transform 0.3s ease;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.1);
+      }
+
+      /* Navigation */
+      .nav-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-tab {
+        padding: 10px 20px;
+        background: var(--secondary);
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-tab:hover {
+        background: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Business Card Styles */
+      .card-container {
+        perspective: 1000px;
+        width: 400px;
+        height: 220px;
+        margin: 40px auto;
+      }
+
+      .business-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+      }
+
+      .card-container:hover .business-card {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        padding: 25px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .card-front {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-back {
+        background: white;
+        transform: rotateY(180deg);
+        color: var(--dark);
+        border: 3px solid var(--secondary);
+      }
+
+      /* Section Styles */
+      .section {
+        background: white;
+        padding: 40px;
+        margin-bottom: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+        border-left: 5px solid var(--primary);
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Recipe Section */
+      .recipe-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin: 20px 0;
+        transition: transform 0.3s ease;
+      }
+
+      .recipe-img:hover {
+        transform: scale(1.02);
+      }
+
+      .recipe-steps {
+        list-style-position: inside;
+        margin: 20px 0;
+      }
+
+      .recipe-steps li {
+        margin: 15px 0;
+        padding: 15px;
+        background: var(--light);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .recipe-steps li:hover {
+        background: var(--secondary);
+        color: white;
+        transform: translateX(10px);
+      }
+
+      h2 {
+        color: var(--primary);
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--secondary);
+        transition: width 0.3s ease;
+      }
+
+      h2:hover::after {
+        width: 100%;
+      }
+
+      .info-item {
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .info-item:hover {
+        background: var(--light);
+        transform: translateX(10px);
+      }
+
+      .highlight {
+        color: var(--secondary);
+        font-weight: bold;
+      }
+
+      /* Skills Section */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .skill-item {
+        background: var(--light);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        background: var(--secondary);
+        color: white;
+        transform: translateY(-5px);
+      }
+
+      /* Loading Animation */
+      .loading-bar {
+        width: 0;
+        height: 3px;
+        background: var(--accent);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: width 0.3s ease;
+      }
+    </style>
   </head>
   <body>
+    <div class="loading-bar"></div>
+
     <header>
-      <nav class="container">
-        <a href="#" class="logo">KH</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+      <div id="particles-js"></div>
+      <div class="header-content">
+        <img
+          src="assets/img/about-perfil.jpg"
+          alt="Profile Picture"
+          class="profile-img"
+        />
+        <h1>Kevin Patrick M. Henson</h1>
+        <p>Web Developer & Culinary Enthusiast</p>
+      </div>
     </header>
 
-    <main>
-      <section class="hero container">
-        <div class="profile-image-container">
-          <img
-            src="assets/img/about-perfil.jpg"
-            alt="Kevin Patrick Henson"
-            class="profile-image"
-          />
-        </div>
-        <div class="hero-content">
-          <h1>Kevin Patrick M. Henson</h1>
-          <h2>Aspiring Professional</h2>
-          <p>
-            Motivated individual seeking opportunities to utilize organizational
-            and time management skills.
-          </p>
-        </div>
-      </section>
+    <div class="nav-tabs">
+      <div class="nav-tab" data-section="about">About</div>
+      <div class="nav-tab" data-section="skills">Skills</div>
+      <div class="nav-tab" data-section="recipe">Recipe</div>
+    </div>
 
-      <section id="about" class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <p>Age: 20 years old</p>
-          <p>Nationality: Filipino</p>
-          <p>Location: Parañaque City, Philippines</p>
-          <p>
-            An ambitious professional with a strong foundation in business and
-            management, seeking opportunities to contribute and grow in a
-            dynamic work environment.
-          </p>
-        </div>
-      </section>
-
-      <section id="education" class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="education-item">
-          <img
-            src="assets/img/paranaque.jpg"
-            alt="School"
-            class="education-icon"
-          />
-          <div>
-            <h3>Parañaque National High School – Main</h3>
-            <p>Accountancy, Business and Management</p>
-            <p>2021 – 2023</p>
-          </div>
-        </div>
-        <div class="education-item">
-          <img
-            src="assets/img/pitogo.jpg"
-            alt="School"
-            class="education-icon"
-          />
-          <div>
-            <h3>Pitogo High School</h3>
-            <p>2018 – 2021</p>
-          </div>
-        </div>
-        <div class="education-item">
-          <img src="assets/img/pio.jpg" alt="School" class="education-icon" />
-          <div>
-            <h3>Heneral Pio Del Pilar Elementary School</h3>
-            <p>2012 - 2017</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="container">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="experience-item">
-          <img src="assets/img/kfc.jpg" alt="KFC" class="experience-icon" />
-          <div>
-            <h3>KFC Ramcar Food Corporation</h3>
-            <p>Service Crew</p>
-            <p>February 2023</p>
-            <p>328, Senator Gil Puyat Avenue, Cor Taft Avenue, Pasay City</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-item">
-            <img
-              src="assets/img/multi.jpg"
-              alt="Multitasking"
-              class="skill-icon"
-            />
-            <span>Multi-tasking</span>
-          </div>
-          <div class="skill-item">
-            <img
-              src="assets/img/problem.jpg"
-              alt="Problem Solving"
-              class="skill-icon"
-            />
-            <span>Problem Solving</span>
-          </div>
-          <div class="skill-item">
-            <img
-              src="assets/img/leader.jpg"
-              alt="Leadership"
-              class="skill-icon"
-            />
-            <span>Leadership Abilities</span>
-          </div>
-          <div class="skill-item">
-            <img
-              src="assets/img/communication.jpg"
-              alt="Communication"
-              class="skill-icon"
-            />
-            <span>Organizational Communication</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="container">
-        <h2 class="section-title">Contact Information</h2>
-        <div class="contact-info">
-          <div class="contact-card">
+    <div class="container">
+      <!-- Business Card -->
+      <div class="card-container">
+        <div class="business-card">
+          <div class="card-front">
+            <h3>Kevin Patrick M. Henson</h3>
             <div>
-              <h3>Email</h3>
-              <p>kevinpatrickhenson@gmail.com</p>
+              <p>📧 kevinpatrickhenson@gmail.com</p>
+              <p>📱 09998431994</p>
+              <p>📍 Parañaque City, Philippines</p>
             </div>
           </div>
-          <div class="contact-card">
-            <div>
-              <h3>Phone</h3>
-              <p>09998431994</p>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div>
-              <h3>Address</h3>
-              <p>10 Ninoy Aquino Avenue, San Dionisio, Parañaque City</p>
+          <div class="card-back">
+            <h3>About Me</h3>
+            <p>
+              A motivated professional with strong organizational and time
+              management skills.
+            </p>
+            <div style="margin-top: 20px">
+              <p>🎓 Fresh Graduate</p>
+              <p>🌟 Creative Problem Solver</p>
+              <p>💡 Innovative Thinker</p>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <script src="assets/js/main.js"></script>
+      <!-- Personal Information -->
+      <div class="section" id="about">
+        <h2>Personal Information</h2>
+        <div class="info-item">
+          <span class="highlight">Birthdate:</span> September 09, 2004
+        </div>
+        <div class="info-item">
+          <span class="highlight">Age:</span> 20 years old
+        </div>
+        <div class="info-item"><span class="highlight">Sex:</span> Male</div>
+        <div class="info-item">
+          <span class="highlight">Birthplace:</span> Makati City
+        </div>
+        <div class="info-item">
+          <span class="highlight">Civil Status:</span> Single
+        </div>
+        <div class="info-item">
+          <span class="highlight">Religion:</span> Catholic
+        </div>
+        <div class="info-item"><span class="highlight">Height:</span> 5'7"</div>
+        <div class="info-item">
+          <span class="highlight">Weight:</span> 134 lbs
+        </div>
+        <div class="info-item">
+          <span class="highlight">Nationality:</span> Filipino
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="section" id="skills">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-container">
+          <div class="skill-item">
+            <h3>Web Development</h3>
+            <p>HTML, CSS, JavaScript</p>
+          </div>
+          <div class="skill-item">
+            <h3>Time Management</h3>
+            <p>Project Planning & Execution</p>
+          </div>
+          <div class="skill-item">
+            <h3>Problem Solving</h3>
+            <p>Analytical Thinking</p>
+          </div>
+          <div class="skill-item">
+            <h3>Cooking</h3>
+            <p>Filipino Cuisine</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recipe Section -->
+      <div class="section" id="recipe">
+        <h2>Sinigang na Baboy Recipe</h2>
+        <img
+          src="assets/img/sinigang.jpg"
+          alt="Sinigang na Baboy"
+          class="recipe-img"
+        />
+
+        <h3>Ingredients:</h3>
+        <ul class="recipe-steps">
+          <li>2 lbs pork belly, cut into chunks</li>
+          <li>2 pieces tomato, quartered</li>
+          <li>1 piece onion, quartered</li>
+          <li>2 pieces taro (gabi), quartered</li>
+          <li>1 bundle string beans (sitaw)</li>
+          <li>2 pieces eggplant, sliced</li>
+          <li>1 bundle water spinach (kangkong)</li>
+          <li>2 pieces green chili</li>
+          <li>1 pack sinigang mix</li>
+        </ul>
+
+        <h3>Steps:</h3>
+        <ol class="recipe-steps">
+          <li>In a large pot, bring 2 liters of water to a boil</li>
+          <li>Add onion and tomatoes, simmer for 2 minutes</li>
+          <li>Add pork belly and cook for 30 minutes or until tender</li>
+          <li>Add taro and cook for 5 minutes</li>
+          <li>Add sinigang mix and stir well</li>
+          <li>Add string beans and eggplant, cook for 3 minutes</li>
+          <li>Add water spinach and green chili</li>
+          <li>Simmer for 2 more minutes</li>
+          <li>Serve hot with rice</li>
+        </ol>
+      </div>
+    </div>
+
+    <script>
+      // Initialize particles.js
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80 },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: 3 },
+          move: { speed: 3 },
+        },
+      });
+
+      // Loading bar animation
+      $(window).on("load", function () {
+        $(".loading-bar").css("width", "100%");
+        setTimeout(() => {
+          $(".loading-bar").css("opacity", "0");
+        }, 1000);
+      });
+
+      // Smooth scroll for navigation
+      $(".nav-tab").click(function () {
+        const section = $(this).data("section");
+        $("html, body").animate(
+          {
+            scrollTop: $(`#${section}`).offset().top - 100,
+          },
+          800
+        );
+      });
+
+      // Fade in sections on scroll
+      $(window).scroll(function () {
+        $(".section").each(function () {
+          const elementTop = $(this).offset().top;
+          const viewportTop = $(window).scrollTop() + $(window).height() * 0.75;
+
+          if (elementTop < viewportTop) {
+            $(this).addClass("visible");
+          }
+        });
+      });
+
+      // Interactive elements
+      $(".info-item").hover(
+        function () {
+          $(this).find(".highlight").css("color", "var(--primary)");
+        },
+        function () {
+          $(this).find(".highlight").css("color", "var(--secondary)");
+        }
+      );
+
+      // Trigger initial scroll check
+      $(window).scroll();
+    </script>
   </body>
 </html>
