@@ -2,471 +2,448 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Kevin Patrick Henson - Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-      :root {
-        --primary: #ff6b6b;
-        --secondary: #4ecdc4;
-        --dark: #2c3e50;
-        --light: #ecf0f1;
-        --accent: #ffe66d;
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
+    <!--------------- FAVICON --------------->
+    <link rel="shortcut icon" href="assets/img/fav.png" type="image/x-icon" />
 
-      body {
-        background: var(--light);
-        color: var(--dark);
-        overflow-x: hidden;
-      }
+    <!--------------- REMIXICONS --------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css"
+      crossorigin=""
+    />
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
+    <!--------------- CSS --------------->
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-      /* Header Styles */
-      #particles-js {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-      }
-
-      header {
-        position: relative;
-        background: var(--primary);
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-        margin-bottom: 40px;
-        overflow: hidden;
-      }
-
-      .header-content {
-        position: relative;
-        z-index: 2;
-      }
-
-      .profile-img {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        margin-bottom: 20px;
-        border: 8px solid var(--secondary);
-        background: #ddd;
-        transition: transform 0.3s ease;
-      }
-
-      .profile-img:hover {
-        transform: scale(1.1);
-      }
-
-      /* Navigation */
-      .nav-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 40px 0;
-        position: sticky;
-        top: 0;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 15px;
-        z-index: 100;
-        backdrop-filter: blur(10px);
-      }
-
-      .nav-tab {
-        padding: 10px 20px;
-        background: var(--secondary);
-        color: white;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .nav-tab:hover {
-        background: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      /* Business Card Styles */
-      .card-container {
-        perspective: 1000px;
-        width: 400px;
-        height: 220px;
-        margin: 40px auto;
-      }
-
-      .business-card {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-        cursor: pointer;
-      }
-
-      .card-container:hover .business-card {
-        transform: rotateY(180deg);
-      }
-
-      .card-front,
-      .card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 20px;
-        padding: 25px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-      }
-
-      .card-front {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .card-back {
-        background: white;
-        transform: rotateY(180deg);
-        color: var(--dark);
-        border: 3px solid var(--secondary);
-      }
-
-      /* Section Styles */
-      .section {
-        background: white;
-        padding: 40px;
-        margin-bottom: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease;
-        border-left: 5px solid var(--primary);
-      }
-
-      .section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      }
-
-      .section.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Recipe Section */
-      .recipe-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 15px;
-        margin: 20px 0;
-        transition: transform 0.3s ease;
-      }
-
-      .recipe-img:hover {
-        transform: scale(1.02);
-      }
-
-      .recipe-steps {
-        list-style-position: inside;
-        margin: 20px 0;
-      }
-
-      .recipe-steps li {
-        margin: 15px 0;
-        padding: 15px;
-        background: var(--light);
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .recipe-steps li:hover {
-        background: var(--secondary);
-        color: white;
-        transform: translateX(10px);
-      }
-
-      h2 {
-        color: var(--primary);
-        margin-bottom: 30px;
-        position: relative;
-        display: inline-block;
-      }
-
-      h2::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--secondary);
-        transition: width 0.3s ease;
-      }
-
-      h2:hover::after {
-        width: 100%;
-      }
-
-      .info-item {
-        margin: 15px 0;
-        padding: 10px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-      }
-
-      .info-item:hover {
-        background: var(--light);
-        transform: translateX(10px);
-      }
-
-      .highlight {
-        color: var(--secondary);
-        font-weight: bold;
-      }
-
-      /* Skills Section */
-      .skills-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-      }
-
-      .skill-item {
-        background: var(--light);
-        padding: 20px;
-        border-radius: 15px;
-        text-align: center;
-        transition: all 0.3s ease;
-      }
-
-      .skill-item:hover {
-        background: var(--secondary);
-        color: white;
-        transform: translateY(-5px);
-      }
-
-      /* Loading Animation */
-      .loading-bar {
-        width: 0;
-        height: 3px;
-        background: var(--accent);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        transition: width 0.3s ease;
-      }
-    </style>
+    <title>KEVIN PATRICK M. HENSON | Portfolio</title>
   </head>
   <body>
-    <div class="loading-bar"></div>
+    <!--------------- HEADER --------------->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">
+          <span class="nav__logo-circle">KH</span>
+          <span class="nav__logo-name">KEVIN PATRICK M. HENSON</span>
+        </a>
 
-    <header>
-      <div id="particles-js"></div>
-      <div class="header-content">
-        <img
-          src="assets/img/about-perfil.jpg"
-          alt="Profile Picture"
-          class="profile-img"
-        />
-        <h1>Kevin Patrick M. Henson</h1>
-        <p>Web Developer & Culinary Enthusiast</p>
-      </div>
+        <div class="nav__menu" id="nav-menu">
+          <span class="nav__title">Menu</span>
+
+          <h3 class="nav__name">Kevin</h3>
+
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">Home</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About Me</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#card" class="nav__link">Card`</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#contact" class="nav__link nav__link-button"
+                >Contact Me</a
+              >
+            </li>
+          </ul>
+
+          <!-- Close button -->
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+
+        <div class="nav__buttons">
+          <!-- Theme button -->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+          <!-- Toggle button -->
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-4-line"></i>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <div class="nav-tabs">
-      <div class="nav-tab" data-section="about">About</div>
-      <div class="nav-tab" data-section="skills">Skills</div>
-      <div class="nav-tab" data-section="recipe">Recipe</div>
-    </div>
+    <!--------------- MAIN --------------->
+    <main class="main">
+      <!--------------- HOME --------------->
+      <section class="home section" id="home">
+        <div class="home__container container grid">
+          <h1 class="home__name">KEVIN PATRICK HENSON</h1>
 
-    <div class="container">
-      <!-- Business Card -->
-      <div class="card-container">
-        <div class="business-card">
-          <div class="card-front">
-            <h3>Kevin Patrick M. Henson</h3>
-            <div>
-              <p>📧 kevinpatrickhenson@gmail.com</p>
-              <p>📱 09998431994</p>
-              <p>📍 Parañaque City, Philippines</p>
+          <div class="home__perfil">
+            <div class="home__image">
+              <img
+                src="assets/img/about-perfil.jpg"
+                alt="image"
+                class="home__img"
+              />
+              <div class="home__shadow"></div>
+
+              <img
+                src="assets/img/curved-arrow.svg"
+                alt=""
+                class="home__arrow"
+              />
+              <img
+                src="assets/img/random-lines.svg"
+                alt=""
+                class="home__line"
+              />
+
+              <div class="geometric-box"></div>
+            </div>
+
+            <div class="home__social">
+              <a href="" target="_blank" class="home__social-link">
+                <i class="ri-facebook-circle-line"></i>
+              </a>
+
+              <a href="" target="_blank" class="home__social-link">
+                <i class="ri-youtube-line"></i>
+              </a>
+
+              <a href="" target="_blank" class="home__social-link">
+                <i class="ri-instagram-line"></i>
+              </a>
             </div>
           </div>
-          <div class="card-back">
-            <h3>About Me</h3>
-            <p>
-              A motivated professional with strong organizational and time
-              management skills.
+
+          <div class="home__info">
+            <p class="home__description">
+              My name is Kevin Patrick M. Henson. I am based in Parañaque City,
+              where I reside at 10 Ninoy Aquino Avenue, San Dionisio. I can be
+              reached via email at kevinpatrickhenson@gmail.com or by phone at
+              09998431994.
             </p>
-            <div style="margin-top: 20px">
-              <p>🎓 Fresh Graduate</p>
-              <p>🌟 Creative Problem Solver</p>
-              <p>💡 Innovative Thinker</p>
+
+            <a href="#about" class="home__scroll">
+              <div class="home__scroll-box">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+
+              <span class="home__scroll-text">Scroll Down</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--------------- ABOUT --------------->
+      <section class="about section" id="about">
+        <div class="about__container container grid">
+          <h2 class="section__title-1">
+            <span>About Me.</span>
+          </h2>
+
+          <div class="about__perfil">
+            <div class="about__image">
+              <img
+                src="assets/img/about-perfil.jpg"
+                alt="image"
+                class="about__img"
+              />
+
+              <div class="about__shadow"></div>
+
+              <div class="geometric-box"></div>
+              <img
+                src="assets/img/random-lines.svg"
+                alt=""
+                class="about__line"
+              />
+              <div class="about__box"></div>
+            </div>
+          </div>
+
+          <div class="about__info">
+            <p class="about__description">
+              My name is Kevin Patrick M. Henson. I am based in Parañaque City,
+              where I reside at 10 Ninoy Aquino Avenue, San Dionisio. I can be
+              reached via email at kevinpatrickhenson@gmail.com or by phone at
+              09998431994.
+            </p>
+
+            <ul class="about__list">
+              <li class="about__item">
+                <b>My Specialty Includes:</b> HTML, CSS, JavaScript, React,
+                Angular, Vue, Node.js, Python, SQL, MongoDB, Git, Web Design,
+                Web Development, Front-End Development, Back-End Development,
+                Full-Stack Development, Responsive Design, User Experience (UX),
+                User Interface (UI) Design, Web Accessibility.
+              </li>
+            </ul>
+
+            <div class="about__buttons">
+              <a href="#contact" class="button">
+                <i class="ri-send-plane-line"></i> Contact Me
+              </a>
+
+              <a href="" target="_blank" class="button__ghost">
+                <i class="ri-facebook-box-line"></i>
+              </a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Personal Information -->
-      <div class="section" id="about">
-        <h2>Personal Information</h2>
-        <div class="info-item">
-          <span class="highlight">Birthdate:</span> September 09, 2004
-        </div>
-        <div class="info-item">
-          <span class="highlight">Age:</span> 20 years old
-        </div>
-        <div class="info-item"><span class="highlight">Sex:</span> Male</div>
-        <div class="info-item">
-          <span class="highlight">Birthplace:</span> Makati City
-        </div>
-        <div class="info-item">
-          <span class="highlight">Civil Status:</span> Single
-        </div>
-        <div class="info-item">
-          <span class="highlight">Religion:</span> Catholic
-        </div>
-        <div class="info-item"><span class="highlight">Height:</span> 5'7"</div>
-        <div class="info-item">
-          <span class="highlight">Weight:</span> 134 lbs
-        </div>
-        <div class="info-item">
-          <span class="highlight">Nationality:</span> Filipino
-        </div>
-      </div>
+      <!--------------- ReCIPE --------------->
+      <section class="home section" id="home">
+        <div class="home__container container grid">
+          <h1 class="home__name">Sinigang na Baboy</h1>
 
-      <!-- Skills Section -->
-      <div class="section" id="skills">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-container">
-          <div class="skill-item">
-            <h3>Web Development</h3>
-            <p>HTML, CSS, JavaScript</p>
+          <div class="home__perfil">
+            <div class="home__image">
+              <img
+                src="assets/img/sinigang.jpg"
+                alt="image"
+                class="home__img"
+              />
+              <div class="home__shadow"></div>
+
+              <img
+                src="assets/img/curved-arrow.svg"
+                alt=""
+                class="home__arrow"
+              />
+              <img
+                src="assets/img/random-lines.svg"
+                alt=""
+                class="home__line"
+              />
+
+              <div class="geometric-box"></div>
+            </div>
           </div>
-          <div class="skill-item">
-            <h3>Time Management</h3>
-            <p>Project Planning & Execution</p>
+
+          <div class="home__info">
+            <p class="about__description">Boil the Pork</p>
+            <p class="about__description">Add Tamarind (Sour) Flavor</p>
+            <p class="about__description">Add Vegetables</p>
+            <p class="about__description">Season and Serve</p>
           </div>
-          <div class="skill-item">
-            <h3>Problem Solving</h3>
-            <p>Analytical Thinking</p>
+
+          <ul class="about__list">
+            <li class="about__item">
+              <b>Ingredients for Sinigang na Baboy:</b>
+              - 1 lb (500g) pork (pork belly or ribs) - 1 medium onion,
+              quartered - 2 tomatoes, quartered - 1 radish, sliced - 5-6 long
+              green beans, trimmed and cut - 1 small eggplant, sliced - 1-2
+              pieces green chili (optional for mild spice) - 1 bunch of water
+              spinach (kangkong) or spinach - Tamarind mix or 5-6 fresh tamarind
+              pods (adjust for preferred sourness) - Salt or fish sauce, to
+              taste - Water (about 6 cups)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!--------------- CALLING CARD --------------->
+      <section class="about section" id="card">
+        <div class="about__container container grid">
+          <h2 class="section__title-1">
+            <span>Calling card.</span>
+          </h2>
+
+          <div class="about__perfil">
+            <div class="about__image">
+              <img
+                src="assets/img/about-perfil.jpg"
+                alt="image"
+                class="about__img"
+              />
+
+              <div class="about__shadow"></div>
+
+              <div class="geometric-box"></div>
+              <img
+                src="assets/img/random-lines.svg"
+                alt=""
+                class="about__line"
+              />
+              <div class="about__box"></div>
+            </div>
           </div>
-          <div class="skill-item">
-            <h3>Cooking</h3>
-            <p>Filipino Cuisine</p>
+
+          <div class="about__info">
+            <p class="about__description">
+              My name is Kevin Patrick M. Henson.
+            </p>
+
+            <p class="about__description">I am based in Parañaque City,</p>
+
+            <p class="about__description">phone at 09998431994</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Recipe Section -->
-      <div class="section" id="recipe">
-        <h2>Sinigang na Baboy Recipe</h2>
-        <img
-          src="assets/img/sinigang.jpg"
-          alt="Sinigang na Baboy"
-          class="recipe-img"
-        />
+      <!--------------- CONTACT --------------->
+      <section class="contact section" id="contact">
+        <div class="contact__container grid">
+          <div class="contact__data">
+            <h2 class="section__title-2">
+              <span>Contact Me.</span>
+            </h2>
 
-        <h3>Ingredients:</h3>
-        <ul class="recipe-steps">
-          <li>2 lbs pork belly, cut into chunks</li>
-          <li>2 pieces tomato, quartered</li>
-          <li>1 piece onion, quartered</li>
-          <li>2 pieces taro (gabi), quartered</li>
-          <li>1 bundle string beans (sitaw)</li>
-          <li>2 pieces eggplant, sliced</li>
-          <li>1 bundle water spinach (kangkong)</li>
-          <li>2 pieces green chili</li>
-          <li>1 pack sinigang mix</li>
+            <p class="contact__description-1">
+              I will read all emails. Send me any message you want and I'll get
+              back to you.
+            </p>
+
+            <p class="contact__description-1">
+              I need your <b>Name</b> and <b>Email Address</b>, but you won't
+              receive anything other that your reply.
+            </p>
+
+            <div class="geometric-box"></div>
+          </div>
+
+          <div class="contact__mail">
+            <h2 class="contact__title">Send Me A Message</h2>
+
+            <form action="" class="contact__form" id="contact-form">
+              <div class="contact__group">
+                <div class="contact__box">
+                  <input
+                    type="text"
+                    name="user_name"
+                    class="contact__input"
+                    id="name"
+                    required
+                    placeholder="First Name"
+                  />
+                  <label for="name" class="contact__label">First Name</label>
+                </div>
+
+                <div class="contact__box">
+                  <input
+                    type="email"
+                    name="user_email"
+                    class="contact__input"
+                    id="email"
+                    required
+                    placeholder="Email Address"
+                  />
+                  <label for="email" class="contact__label"
+                    >Email Address</label
+                  >
+                </div>
+              </div>
+
+              <div class="contact__box">
+                <input
+                  type="text"
+                  name="user_subject"
+                  class="contact__input"
+                  id="subject"
+                  required
+                  placeholder="Subject"
+                />
+                <label for="subject" class="contact__label">Subject</label>
+              </div>
+
+              <div class="contact__box contact__area">
+                <textarea
+                  name="user_message"
+                  id="message"
+                  class="contact__input"
+                  required
+                  placeholder="Message"
+                ></textarea>
+                <label for="message" class="contact__label">Message</label>
+              </div>
+
+              <p class="contact__message" id="contact-message"></p>
+
+              <button type="submit" class="contact__button button">
+                <i class="ri-send-plane-line"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+          <div class="contact__social">
+            <img
+              src="assets/img/curved-arrow.svg"
+              alt=""
+              class="contact__social-arrow"
+            />
+
+            <div class="contact__social-data">
+              <div>
+                <p class="contact__social-description-1">
+                  Does not send emails
+                </p>
+
+                <p class="contact__social-description-2">
+                  Write me on my social networks
+                </p>
+              </div>
+
+              <div class="contact__social-links">
+                <a href="" target="_blank" class="contact__social-link">
+                  <i class="ri-facebook-circle-line"></i>
+                </a>
+
+                <a href="" target="_blank" class="contact__social-link">
+                  <i class="ri-instagram-line"></i>
+                </a>
+
+                <a href="" target="_blank" class="contact__social-link">
+                  <i class="ri-linkedin-box-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--------------- FOOTER --------------->
+    <footer class="footer">
+      <div class="footer__container container grid">
+        <ul class="footer__links">
+          <li>
+            <a href="#home" class="footer__link">Home</a>
+          </li>
+
+          <li>
+            <a href="#about" class="footer__link">About</a>
+          </li>
+
+          <li>
+            <a href="#card" class="footer__link">Calling Card</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="footer__link">Contact Us</a>
+          </li>
         </ul>
 
-        <h3>Steps:</h3>
-        <ol class="recipe-steps">
-          <li>In a large pot, bring 2 liters of water to a boil</li>
-          <li>Add onion and tomatoes, simmer for 2 minutes</li>
-          <li>Add pork belly and cook for 30 minutes or until tender</li>
-          <li>Add taro and cook for 5 minutes</li>
-          <li>Add sinigang mix and stir well</li>
-          <li>Add string beans and eggplant, cook for 3 minutes</li>
-          <li>Add water spinach and green chili</li>
-          <li>Simmer for 2 more minutes</li>
-          <li>Serve hot with rice</li>
-        </ol>
+        <span class="footer__copy">
+          &#169; All Rights Reserved By
+          <a href=""> KEVIN PATRICK M. HENSON</a>
+        </span>
       </div>
-    </div>
+    </footer>
 
-    <script>
-      // Initialize particles.js
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 80 },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5 },
-          size: { value: 3 },
-          move: { speed: 3 },
-        },
-      });
+    <!--------------- SCROLL UP --------------->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-right-up-line"></i>
+    </a>
 
-      // Loading bar animation
-      $(window).on("load", function () {
-        $(".loading-bar").css("width", "100%");
-        setTimeout(() => {
-          $(".loading-bar").css("opacity", "0");
-        }, 1000);
-      });
+    <!--------------- SCROLLREVEAL --------------->
+    <script src="assets/js/scrollreveal.min.js"></script>
 
-      // Smooth scroll for navigation
-      $(".nav-tab").click(function () {
-        const section = $(this).data("section");
-        $("html, body").animate(
-          {
-            scrollTop: $(`#${section}`).offset().top - 100,
-          },
-          800
-        );
-      });
+    <!--------------- EMAIL JS --------------->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-      // Fade in sections on scroll
-      $(window).scroll(function () {
-        $(".section").each(function () {
-          const elementTop = $(this).offset().top;
-          const viewportTop = $(window).scrollTop() + $(window).height() * 0.75;
-
-          if (elementTop < viewportTop) {
-            $(this).addClass("visible");
-          }
-        });
-      });
-
-      // Interactive elements
-      $(".info-item").hover(
-        function () {
-          $(this).find(".highlight").css("color", "var(--primary)");
-        },
-        function () {
-          $(this).find(".highlight").css("color", "var(--secondary)");
-        }
-      );
-
-      // Trigger initial scroll check
-      $(window).scroll();
-    </script>
+    <!--------------- MAIN JS --------------->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
