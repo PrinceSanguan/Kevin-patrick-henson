@@ -1,449 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!--------------- FAVICON --------------->
-    <link rel="shortcut icon" href="assets/img/fav.png" type="image/x-icon" />
-
-    <!--------------- REMIXICONS --------------->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="assets/img/about-perfil.jpg"
+      type="image/x-icon"
+    />
+    <!-- Add Font Awesome for icons -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css"
-      crossorigin=""
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-
-    <!--------------- CSS --------------->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-
-    <title>KEVIN PATRICK M. HENSON | Portfolio</title>
+    <!-- Add particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <title>Kevin Patrick Henson - Portfolio</title>
   </head>
   <body>
-    <!--------------- HEADER --------------->
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">
-          <span class="nav__logo-circle">KH</span>
-          <span class="nav__logo-name">KEVIN PATRICK M. HENSON</span>
-        </a>
+    <div id="particles-js"></div>
 
-        <div class="nav__menu" id="nav-menu">
-          <span class="nav__title">Menu</span>
-
-          <h3 class="nav__name">Kevin</h3>
-
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">Home</a>
-            </li>
-
-            <li class="nav__item">
-              <a href="#about" class="nav__link">About Me</a>
-            </li>
-
-            <li class="nav__item">
-              <a href="#card" class="nav__link">Card`</a>
-            </li>
-
-            <li class="nav__item">
-              <a href="#contact" class="nav__link nav__link-button"
-                >Contact Me</a
-              >
-            </li>
-          </ul>
-
-          <!-- Close button -->
-          <div class="nav__close" id="nav-close">
-            <i class="ri-close-line"></i>
-          </div>
-        </div>
-
-        <div class="nav__buttons">
-          <!-- Theme button -->
-          <i class="ri-moon-line change-theme" id="theme-button"></i>
-
-          <!-- Toggle button -->
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="ri-menu-4-line"></i>
+    <header>
+      <nav class="container">
+        <a href="#" class="logo">KH</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <div class="nav-icons">
+            <button class="search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="theme-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
           </div>
         </div>
       </nav>
     </header>
 
-    <!--------------- MAIN --------------->
-    <main class="main">
-      <!--------------- HOME --------------->
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <h1 class="home__name">KEVIN PATRICK HENSON</h1>
+    <main>
+      <section class="hero container">
+        <div class="profile-image-container">
+          <img
+            src="assets/img/about-perfil.jpg"
+            alt="Kevin Patrick Henson"
+            class="profile-image"
+          />
+        </div>
+        <div class="hero-content">
+          <h1>Kevin Patrick M. Henson</h1>
+          <h2>Aspiring Professional</h2>
+          <p>
+            Motivated individual seeking opportunities to utilize organizational
+            and time management skills.
+          </p>
+        </div>
+      </section>
 
-          <div class="home__perfil">
-            <div class="home__image">
-              <img
-                src="assets/img/about-perfil.jpg"
-                alt="image"
-                class="home__img"
-              />
-              <div class="home__shadow"></div>
+      <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <p>Age: 20 years old</p>
+          <p>Nationality: Filipino</p>
+          <p>Location: Parañaque City, Philippines</p>
+          <p>
+            An ambitious professional with a strong foundation in business and
+            management, seeking opportunities to contribute and grow in a
+            dynamic work environment.
+          </p>
+        </div>
+      </section>
 
-              <img
-                src="assets/img/curved-arrow.svg"
-                alt=""
-                class="home__arrow"
-              />
-              <img
-                src="assets/img/random-lines.svg"
-                alt=""
-                class="home__line"
-              />
-
-              <div class="geometric-box"></div>
-            </div>
-
-            <div class="home__social">
-              <a href="" target="_blank" class="home__social-link">
-                <i class="ri-facebook-circle-line"></i>
-              </a>
-
-              <a href="" target="_blank" class="home__social-link">
-                <i class="ri-youtube-line"></i>
-              </a>
-
-              <a href="" target="_blank" class="home__social-link">
-                <i class="ri-instagram-line"></i>
-              </a>
-            </div>
+      <section id="education" class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+          <img
+            src="assets/img/paranaque.jpg"
+            alt="School"
+            class="education-icon"
+          />
+          <div>
+            <h3>Parañaque National High School – Main</h3>
+            <p>Accountancy, Business and Management</p>
+            <p>2021 – 2023</p>
           </div>
-
-          <div class="home__info">
-            <p class="home__description">
-              My name is Kevin Patrick M. Henson. I am based in Parañaque City,
-              where I reside at 10 Ninoy Aquino Avenue, San Dionisio. I can be
-              reached via email at kevinpatrickhenson@gmail.com or by phone at
-              09998431994.
-            </p>
-
-            <a href="#about" class="home__scroll">
-              <div class="home__scroll-box">
-                <i class="ri-arrow-down-s-line"></i>
-              </div>
-
-              <span class="home__scroll-text">Scroll Down</span>
-            </a>
+        </div>
+        <div class="education-item">
+          <img
+            src="assets/img/pitogo.jpg"
+            alt="School"
+            class="education-icon"
+          />
+          <div>
+            <h3>Pitogo High School</h3>
+            <p>2018 – 2021</p>
+          </div>
+        </div>
+        <div class="education-item">
+          <img src="assets/img/pio.jpg" alt="School" class="education-icon" />
+          <div>
+            <h3>Heneral Pio Del Pilar Elementary School</h3>
+            <p>2012 - 2017</p>
           </div>
         </div>
       </section>
 
-      <!--------------- ABOUT --------------->
-      <section class="about section" id="about">
-        <div class="about__container container grid">
-          <h2 class="section__title-1">
-            <span>About Me.</span>
-          </h2>
-
-          <div class="about__perfil">
-            <div class="about__image">
-              <img
-                src="assets/img/about-perfil.jpg"
-                alt="image"
-                class="about__img"
-              />
-
-              <div class="about__shadow"></div>
-
-              <div class="geometric-box"></div>
-              <img
-                src="assets/img/random-lines.svg"
-                alt=""
-                class="about__line"
-              />
-              <div class="about__box"></div>
-            </div>
-          </div>
-
-          <div class="about__info">
-            <p class="about__description">
-              My name is Kevin Patrick M. Henson. I am based in Parañaque City,
-              where I reside at 10 Ninoy Aquino Avenue, San Dionisio. I can be
-              reached via email at kevinpatrickhenson@gmail.com or by phone at
-              09998431994.
-            </p>
-
-            <ul class="about__list">
-              <li class="about__item">
-                <b>My Specialty Includes:</b> HTML, CSS, JavaScript, React,
-                Angular, Vue, Node.js, Python, SQL, MongoDB, Git, Web Design,
-                Web Development, Front-End Development, Back-End Development,
-                Full-Stack Development, Responsive Design, User Experience (UX),
-                User Interface (UI) Design, Web Accessibility.
-              </li>
-            </ul>
-
-            <div class="about__buttons">
-              <a href="#contact" class="button">
-                <i class="ri-send-plane-line"></i> Contact Me
-              </a>
-
-              <a href="" target="_blank" class="button__ghost">
-                <i class="ri-facebook-box-line"></i>
-              </a>
-            </div>
+      <section id="experience" class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-item">
+          <img src="assets/img/kfc.jpg" alt="KFC" class="experience-icon" />
+          <div>
+            <h3>KFC Ramcar Food Corporation</h3>
+            <p>Service Crew</p>
+            <p>February 2023</p>
+            <p>328, Senator Gil Puyat Avenue, Cor Taft Avenue, Pasay City</p>
           </div>
         </div>
       </section>
 
-      <!--------------- ReCIPE --------------->
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <h1 class="home__name">Sinigang na Baboy</h1>
-
-          <div class="home__perfil">
-            <div class="home__image">
-              <img
-                src="assets/img/sinigang.jpg"
-                alt="image"
-                class="home__img"
-              />
-              <div class="home__shadow"></div>
-
-              <img
-                src="assets/img/curved-arrow.svg"
-                alt=""
-                class="home__arrow"
-              />
-              <img
-                src="assets/img/random-lines.svg"
-                alt=""
-                class="home__line"
-              />
-
-              <div class="geometric-box"></div>
-            </div>
-          </div>
-
-          <div class="home__info">
-            <p class="about__description">Boil the Pork</p>
-            <p class="about__description">Add Tamarind (Sour) Flavor</p>
-            <p class="about__description">Add Vegetables</p>
-            <p class="about__description">Season and Serve</p>
-          </div>
-
-          <ul class="about__list">
-            <li class="about__item">
-              <b>Ingredients for Sinigang na Baboy:</b>
-              - 1 lb (500g) pork (pork belly or ribs) - 1 medium onion,
-              quartered - 2 tomatoes, quartered - 1 radish, sliced - 5-6 long
-              green beans, trimmed and cut - 1 small eggplant, sliced - 1-2
-              pieces green chili (optional for mild spice) - 1 bunch of water
-              spinach (kangkong) or spinach - Tamarind mix or 5-6 fresh tamarind
-              pods (adjust for preferred sourness) - Salt or fish sauce, to
-              taste - Water (about 6 cups)
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!--------------- CALLING CARD --------------->
-      <section class="about section" id="card">
-        <div class="about__container container grid">
-          <h2 class="section__title-1">
-            <span>Calling card.</span>
-          </h2>
-
-          <div class="about__perfil">
-            <div class="about__image">
-              <img
-                src="assets/img/about-perfil.jpg"
-                alt="image"
-                class="about__img"
-              />
-
-              <div class="about__shadow"></div>
-
-              <div class="geometric-box"></div>
-              <img
-                src="assets/img/random-lines.svg"
-                alt=""
-                class="about__line"
-              />
-              <div class="about__box"></div>
-            </div>
-          </div>
-
-          <div class="about__info">
-            <p class="about__description">
-              My name is Kevin Patrick M. Henson.
-            </p>
-
-            <p class="about__description">I am based in Parañaque City,</p>
-
-            <p class="about__description">phone at 09998431994</p>
-          </div>
-        </div>
-      </section>
-
-      <!--------------- CONTACT --------------->
-      <section class="contact section" id="contact">
-        <div class="contact__container grid">
-          <div class="contact__data">
-            <h2 class="section__title-2">
-              <span>Contact Me.</span>
-            </h2>
-
-            <p class="contact__description-1">
-              I will read all emails. Send me any message you want and I'll get
-              back to you.
-            </p>
-
-            <p class="contact__description-1">
-              I need your <b>Name</b> and <b>Email Address</b>, but you won't
-              receive anything other that your reply.
-            </p>
-
-            <div class="geometric-box"></div>
-          </div>
-
-          <div class="contact__mail">
-            <h2 class="contact__title">Send Me A Message</h2>
-
-            <form action="" class="contact__form" id="contact-form">
-              <div class="contact__group">
-                <div class="contact__box">
-                  <input
-                    type="text"
-                    name="user_name"
-                    class="contact__input"
-                    id="name"
-                    required
-                    placeholder="First Name"
-                  />
-                  <label for="name" class="contact__label">First Name</label>
-                </div>
-
-                <div class="contact__box">
-                  <input
-                    type="email"
-                    name="user_email"
-                    class="contact__input"
-                    id="email"
-                    required
-                    placeholder="Email Address"
-                  />
-                  <label for="email" class="contact__label"
-                    >Email Address</label
-                  >
-                </div>
-              </div>
-
-              <div class="contact__box">
-                <input
-                  type="text"
-                  name="user_subject"
-                  class="contact__input"
-                  id="subject"
-                  required
-                  placeholder="Subject"
-                />
-                <label for="subject" class="contact__label">Subject</label>
-              </div>
-
-              <div class="contact__box contact__area">
-                <textarea
-                  name="user_message"
-                  id="message"
-                  class="contact__input"
-                  required
-                  placeholder="Message"
-                ></textarea>
-                <label for="message" class="contact__label">Message</label>
-              </div>
-
-              <p class="contact__message" id="contact-message"></p>
-
-              <button type="submit" class="contact__button button">
-                <i class="ri-send-plane-line"></i> Send Message
-              </button>
-            </form>
-          </div>
-
-          <div class="contact__social">
+      <section id="skills" class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
             <img
-              src="assets/img/curved-arrow.svg"
-              alt=""
-              class="contact__social-arrow"
+              src="assets/img/multi.jpg"
+              alt="Multitasking"
+              class="skill-icon"
             />
+            <span>Multi-tasking</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="assets/img/problem.jpg"
+              alt="Problem Solving"
+              class="skill-icon"
+            />
+            <span>Problem Solving</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="assets/img/leader.jpg"
+              alt="Leadership"
+              class="skill-icon"
+            />
+            <span>Leadership Abilities</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="assets/img/communication.jpg"
+              alt="Communication"
+              class="skill-icon"
+            />
+            <span>Organizational Communication</span>
+          </div>
+        </div>
+      </section>
 
-            <div class="contact__social-data">
-              <div>
-                <p class="contact__social-description-1">
-                  Does not send emails
-                </p>
-
-                <p class="contact__social-description-2">
-                  Write me on my social networks
-                </p>
-              </div>
-
-              <div class="contact__social-links">
-                <a href="" target="_blank" class="contact__social-link">
-                  <i class="ri-facebook-circle-line"></i>
-                </a>
-
-                <a href="" target="_blank" class="contact__social-link">
-                  <i class="ri-instagram-line"></i>
-                </a>
-
-                <a href="" target="_blank" class="contact__social-link">
-                  <i class="ri-linkedin-box-line"></i>
-                </a>
-              </div>
+      <section id="contact" class="container">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-info">
+          <div class="contact-card">
+            <div>
+              <h3>Email</h3>
+              <p>kevinpatrickhenson@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div>
+              <h3>Phone</h3>
+              <p>09998431994</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div>
+              <h3>Address</h3>
+              <p>10 Ninoy Aquino Avenue, San Dionisio, Parañaque City</p>
             </div>
           </div>
         </div>
       </section>
+      <!-- Add this HTML just before the closing </main> tag -->
+      <section id="contact-form" class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="form-container">
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Enter your name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Your message"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+          </div>
+          <p class="copyright">
+            © 2024 Kevin Patrick Henson. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </main>
 
-    <!--------------- FOOTER --------------->
-    <footer class="footer">
-      <div class="footer__container container grid">
-        <ul class="footer__links">
-          <li>
-            <a href="#home" class="footer__link">Home</a>
-          </li>
-
-          <li>
-            <a href="#about" class="footer__link">About</a>
-          </li>
-
-          <li>
-            <a href="#card" class="footer__link">Calling Card</a>
-          </li>
-
-          <li>
-            <a href="#contact" class="footer__link">Contact Us</a>
-          </li>
-        </ul>
-
-        <span class="footer__copy">
-          &#169; All Rights Reserved By
-          <a href=""> KEVIN PATRICK M. HENSON</a>
-        </span>
-      </div>
-    </footer>
-
-    <!--------------- SCROLL UP --------------->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="ri-arrow-right-up-line"></i>
-    </a>
-
-    <!--------------- SCROLLREVEAL --------------->
-    <script src="assets/js/scrollreveal.min.js"></script>
-
-    <!--------------- EMAIL JS --------------->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-    <!--------------- MAIN JS --------------->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
